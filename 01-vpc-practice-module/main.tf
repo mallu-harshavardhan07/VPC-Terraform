@@ -71,12 +71,12 @@ resource "aws_route" "public_r" {
 resource "aws_route" "private_r" {
   route_table_id            = aws_route_table.private_rt.id
   destination_cidr_block    = "0.0.0.0/0"
-  gateway_id = aws_eip.lb.id
+  gateway_id = aws_nat_gateway.example.id
 }
 resource "aws_route" "database_r" {
   route_table_id            = aws_route_table.database_rt.id
   destination_cidr_block    = "0.0.0.0/0"
-  gateway_id = aws_eip.lb.id
+  gateway_id = aws_nat_gateway.example.id
 }
 
 resource "aws_route_table_association" "public_rta" {
